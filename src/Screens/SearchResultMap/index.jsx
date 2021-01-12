@@ -8,7 +8,6 @@ import places from '../../../assets/data/feed'
 
 const SearchResultMapScreen = (props) => {
   const [selectedID, setSelectedID] = useState("");
-  console.log('selectedID' + selectedID)
 
     return (
         <View style={styles.container}>
