@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import HomeScreen from './src/Screens/Home/index'
 import Entype from 'react-native-vector-icons/Entypo';
-
 // AWS-AMPLIFY
 // import Amplify from 'aws-amplify'
 // import config from './aws-exports'
@@ -11,8 +11,9 @@ import Entype from 'react-native-vector-icons/Entypo';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app! <Entype name={'phone'} size={25}/></Text>
-      <StatusBar style="auto" />
+      <SafeAreaView>
+        <HomeScreen/>
+      </SafeAreaView>
     </View>
   );
 }

@@ -1,10 +1,13 @@
 import React from 'react'
 import { View, Text } from 'react-native'
+import styles from './styles'
 
-export default function index() {
+const HomeScreen = (props) => {
     return (
         <View>
-            <Text></Text>
+            <Text>Yes</Text>
         </View>
     )
 }
+
+export default HomeScreen;
