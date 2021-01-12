@@ -23,7 +23,6 @@ const SearchResultMapScreen = (props) => {
   })
 
   useEffect(() => {
-    console.log(selectedID)
     if (!selectedID || !carouselRef) {
       return;
     }
@@ -92,7 +91,6 @@ const styles = StyleSheet.create({
     },
     markerText: {
       fontWeight: 'bold',
-      // color: '#94B7D7'
     },
     carousel: {
       position: 'absolute',
