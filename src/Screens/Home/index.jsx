@@ -16,14 +16,12 @@ const HomeScreen = (props) => {
             source={require('../../../assets/images/home.jpg')}
             style={styles.image}>
                 <Text style={styles.title}>Go Wild</Text>
-
                 <Pressable
                 style={styles.btn}
                 onPress={()=>console.warn('Explore Btn clicked')}>
                     <Text style={styles.btnText}>Explore nearby cabins</Text>
                 </Pressable>
             </ImageBackground>
-            <Text>Yes</Text>
         </View>
     )
 }
