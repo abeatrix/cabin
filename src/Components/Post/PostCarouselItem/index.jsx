@@ -9,7 +9,7 @@ const PostCarouselItem = ({post}) => {
 
     const styles = StyleSheet.create({
         container: {
-            width: width-80,
+            width: width-60,
             height: 120,
             padding: 2,
             shadowColor: "#2D57A7",
@@ -57,8 +57,7 @@ const PostCarouselItem = ({post}) => {
     return (
         <View style={styles.container}>
             <View style={styles.wrapper}>
-                <Image style={styles.image}
-                source={{uri: pic}}/>
+                { pic ? <Image style={styles.image} source={{uri: pic}}/> : <Image style={styles.image} source={{uri: defaultpic}}/>}
 
                 <View style={styles.right}>
                     <Text style={styles.rooms}>{post.bed} bed {post.bedroom} bedroom</Text>

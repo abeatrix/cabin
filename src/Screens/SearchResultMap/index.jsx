@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import MapView, {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import React, {useState, useEffect, useRef} from 'react';
+import MapView, {PROVIDER_GOOGLE } from 'react-native-maps';
 import { StyleSheet, View, FlatList } from 'react-native';
 import MapMarker from '../../Components/MapMarker'
 import PostCarouselItem from '../../Components/Post/PostCarouselItem'
@@ -10,7 +10,26 @@ import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimen
 const SearchResultMapScreen = (props) => {
   const [selectedID, setSelectedID] = useState("");
 
-  const width = useWindowDimensions().width
+  const width = useWindowDimensions().width;
+
+  const carouselRef = useRef();
+  const map = useRef();
+  const viewConfig = useRef({itemVisiblePercentThreshold: 70});
+  const onViewChanged = useRef(({viewableItems}) => {
+    if(viewableItems.length>0){
+      const selectedPlace = viewableItems[0].item;
+      setSelectedID(selectedPlace.id)
+    }
+  })
+
+  useEffect(() => {
+    console.log(selectedID)
+    if (!selectedID || !carouselRef) {
+      return;
+    }
+    const index = places.findIndex(place => place.id === selectedID)
+    carouselRef.current.scrollToIndex({index})
+  }, [selectedID])
 
     return (
         <View style={styles.container}>
@@ -37,13 +56,16 @@ const SearchResultMapScreen = (props) => {
 
           <View style={styles.carousel}>
             <FlatList
+              ref={carouselRef}
               data={places}
-              renderItem={({item}) => <PostCarouselItem post={item} />}
+              renderItem={({item}) => <PostCarouselItem key={item.id} post={item} />}
               horizontal
               showsHorizontalScrollIndicator={false}
-              snapToInterval={width-60}
-              snapToAlignment={'center'}
+              snapToInterval={width - 60}
+              snapToAlignment={"center"}
               decelerationRate={'fast'}
+              onViewableItemsChanged={onViewChanged.current}
+              viewabilityConfig={viewConfig.current}
             />
           </View>
         </View>
