@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         width: '70%',
     },
     btn: {
-        marginTop: 20,
+        marginTop: 40,
         marginLeft: 20,
         backgroundColor: '#fff',
         width: '50%',

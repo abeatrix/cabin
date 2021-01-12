@@ -1,13 +1,34 @@
-import React, {useState} from 'react';
-import MapView, {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import React, {useState, useEffect, useRef} from 'react';
+import MapView, {PROVIDER_GOOGLE } from 'react-native-maps';
+import { StyleSheet, View, FlatList } from 'react-native';
 import MapMarker from '../../Components/MapMarker'
-
+import PostCarouselItem from '../../Components/Post/PostCarouselItem'
 //DUMMY DATA
 import places from '../../../assets/data/feed'
+import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 
 const SearchResultMapScreen = (props) => {
   const [selectedID, setSelectedID] = useState("");
+
+  const width = useWindowDimensions().width;
+
+  const carouselRef = useRef();
+  const map = useRef();
+  const viewConfig = useRef({itemVisiblePercentThreshold: 70});
+  const onViewChanged = useRef(({viewableItems}) => {
+    if(viewableItems.length>0){
+      const selectedPlace = viewableItems[0].item;
+      setSelectedID(selectedPlace.id)
+    }
+  })
+
+  useEffect(() => {
+    if (!selectedID || !carouselRef) {
+      return;
+    }
+    const index = places.findIndex(place => place.id === selectedID)
+    carouselRef.current.scrollToIndex({index})
+  }, [selectedID])
 
     return (
         <View style={styles.container}>
@@ -24,13 +45,28 @@ const SearchResultMapScreen = (props) => {
 
             {places.map(place=>
               <MapMarker
-              coordinate={place.coordinate}
-              price={place.newPrice}
-              isSelected={place.id === selectedID}
-              onPress={() => setSelectedID(place.id)}
+                coordinate={place.coordinate}
+                price={place.newPrice}
+                isSelected={place.id === selectedID}
+                onPress={() => setSelectedID(place.id)}
               />
             )}
           </MapView>
+
+          <View style={styles.carousel}>
+            <FlatList
+              ref={carouselRef}
+              data={places}
+              renderItem={({item}) => <PostCarouselItem key={item.id} post={item} />}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              snapToInterval={width - 60}
+              snapToAlignment={"center"}
+              decelerationRate={'fast'}
+              onViewableItemsChanged={onViewChanged.current}
+              viewabilityConfig={viewConfig.current}
+            />
+          </View>
         </View>
       );
 }
@@ -41,12 +77,10 @@ const styles = StyleSheet.create({
     container: {
       width: '100%',
       height: '100%',
-      alignItems: 'center',
-      justifyContent: 'center',
     },
     map: {
-      width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height,
+      width: '100%',
+      height: '100%',
     },
     marker: {
       backgroundColor: 'white',
@@ -57,6 +91,10 @@ const styles = StyleSheet.create({
     },
     markerText: {
       fontWeight: 'bold',
-      // color: '#94B7D7'
+    },
+    carousel: {
+      position: 'absolute',
+      bottom: 10,
+      margin: 5,
     }
   });

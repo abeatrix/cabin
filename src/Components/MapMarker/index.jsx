@@ -6,7 +6,7 @@ const MapMarker = ({coordinate, price, onPress, isSelected}) => {
 
   const styles = StyleSheet.create({
     marker: {
-      backgroundColor: isSelected ? "#000" : '#fff',
+      backgroundColor: isSelected ? "#94B7D7" : '#fff',
       padding: 5,
       borderRadius: 20,
       borderColor: '#94B7D7',
