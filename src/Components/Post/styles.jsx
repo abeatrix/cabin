@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
         aspectRatio: 3/2,
         resizeMode: 'cover',
         borderRadius: 10,
+        opacity: 20,
     },
     rooms: {
         marginVertical: 10,

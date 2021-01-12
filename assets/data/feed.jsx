@@ -1,9 +1,10 @@
 export default [
-    {
+  {
       id: '0',
-      image: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/1.jpg',
-      type: 'Private Room',
-      title: 'Bright room in the heart of the city',
+      image: 'https://a0.muscache.com/im/pictures/3e4d7389-9ce7-4487-bf8a-d16645cbb5d4.jpg?im_w=1200',
+      type: 'Entire Cabin',
+      title: 'This cozy vacation cabin has been completely renovated with all the modern luxuries yet it still has that rustic cabin atmosphere. You are surrounded by pine trees which gives you privacy and an outdoor feel. This place is perfect for a couples romantic getaway or a family of four vacation.',
+      about: 'This cozy vacation cabin has been completely renovated with all the modern luxuries yet it still has that rustic cabin atmosphere. You are surrounded by pine trees which gives you privacy and an outdoor feel. This place is perfect for a couples romantic getaway or a family of four vacation.',
       bed: 2,
       bedroom: 3,
       oldPrice: 25,
@@ -57,6 +58,21 @@ export default [
       coordinate: {
         latitude: 28.4815637,
         longitude: -16.2991304,
+      },
+    },
+    {
+      id: '4',
+      image: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/1.jpg',
+      type: 'Private Room',
+      title: 'Bright room in the heart of the city',
+      bed: 2,
+      bedroom: 3,
+      oldPrice: 25,
+      newPrice: 20,
+      totalPrice: 120,
+      coordinate: {
+        latitude: 28.3915637,
+        longitude: -16.6291304,
       },
     },
   ];
