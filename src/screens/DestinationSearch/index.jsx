@@ -20,7 +20,7 @@ const DestinationSearchScreen = () => {
         }}
         fetchDetails
         query={{
-          key: process.env.REACT_APP_GOOGLEAPI,
+          key: process.env.REACT_NATIVE_GOOGLEAPI,
           language: 'en',
           types: '(cities)',
         }}
