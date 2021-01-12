@@ -2,10 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaView, ScrollView, Text, View } from 'react-native';
 import HomeScreen from './src/Screens/Home/index'
-import Post from './src/Components/Post/index'
 import SearchResultScreen from './src/Screens/SearchResult'
 import SearchResultMapScreen from './src/Screens/SearchResultMap'
-import SearchResultTabNavigator from './src/Navigation/SearchResultTabNavigator'
+// import Router from './src/Navigation/Router'
 
 // AWS-AMPLIFY
 import Amplify from 'aws-amplify'
@@ -18,7 +17,7 @@ export default function App() {
       <SearchResultMapScreen/>
       {/* <HomeScreen/> */}
       {/* <SearchResultScreen/> */}
-      {/* <SearchResultTabNavigator/> */}
+      {/* <Router/> */}
     </ScrollView>
   );
 }
