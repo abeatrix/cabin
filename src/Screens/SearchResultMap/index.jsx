@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import MapView, {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import MapMarker from '../../Components/MapMarker'
-
+import PostCarouselItem from '../../Components/Post/PostCarouselItem'
 //DUMMY DATA
 import places from '../../../assets/data/feed'
 
@@ -31,6 +31,10 @@ const SearchResultMapScreen = (props) => {
               />
             )}
           </MapView>
+
+          <View style={styles.carousel}>
+              <PostCarouselItem post={places[0]} />
+          </View>
         </View>
       );
 }
@@ -41,12 +45,10 @@ const styles = StyleSheet.create({
     container: {
       width: '100%',
       height: '100%',
-      alignItems: 'center',
-      justifyContent: 'center',
     },
     map: {
-      width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height,
+      width: '100%',
+      height: '100%',
     },
     marker: {
       backgroundColor: 'white',
@@ -58,5 +60,9 @@ const styles = StyleSheet.create({
     markerText: {
       fontWeight: 'bold',
       // color: '#94B7D7'
+    },
+    carousel: {
+      position: 'absolute',
+      bottom: 10
     }
   });
