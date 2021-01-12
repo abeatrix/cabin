@@ -1,13 +1,14 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    container: {
-        height: 120,
+    cardcontainer: {
+        margin: 5,
         padding: 5,
+        height: 120,
         shadowColor: "#000",
         shadowOffset: {
-        width: 0,
-        height: 5,
+            width: 0,
+            height: 5,
         },
         shadowOpacity: 0.34,
         shadowRadius: 6.27,
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
         color: '#94B7D7', //#2D57A7
         fontWeight: 'bold',
         marginVertical: 10,
-        fontSize: 17
+        fontSize: 15,
     },
     right: {
         marginHorizontal: 10,

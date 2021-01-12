@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
 import MapView, {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import MapMarker from '../../Components/MapMarker'
 import PostCarouselItem from '../../Components/Post/PostCarouselItem'
 //DUMMY DATA
 import places from '../../../assets/data/feed'
+import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 
 const SearchResultMapScreen = (props) => {
   const [selectedID, setSelectedID] = useState("");
+
+  const width = useWindowDimensions().width
 
     return (
         <View style={styles.container}>
@@ -24,16 +27,24 @@ const SearchResultMapScreen = (props) => {
 
             {places.map(place=>
               <MapMarker
-              coordinate={place.coordinate}
-              price={place.newPrice}
-              isSelected={place.id === selectedID}
-              onPress={() => setSelectedID(place.id)}
+                coordinate={place.coordinate}
+                price={place.newPrice}
+                isSelected={place.id === selectedID}
+                onPress={() => setSelectedID(place.id)}
               />
             )}
           </MapView>
 
           <View style={styles.carousel}>
-              <PostCarouselItem post={places[0]} />
+            <FlatList
+              data={places}
+              renderItem={({item}) => <PostCarouselItem post={item} />}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              snapToInterval={width-60}
+              snapToAlignment={'center'}
+              decelerationRate={'fast'}
+            />
           </View>
         </View>
       );
@@ -63,6 +74,7 @@ const styles = StyleSheet.create({
     },
     carousel: {
       position: 'absolute',
-      bottom: 10
+      bottom: 10,
+      margin: 5,
     }
   });
