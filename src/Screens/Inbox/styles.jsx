@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     },
     inbox: {
         margin: 5,
-        backgroundColor: '#94B7D7',
+        backgroundColor: '#E8EDF3',
         flex: 1,
         width: '100%',
         paddingVertical: 30
