@@ -8,7 +8,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import PostScreen from '../Screens/PostScreen';
-import SearchResultMapScreen from '../Screens/SearchResultMap';
+import SavedScreen from '../Screens/Saved';
+import ProfileScreen from '../Screens/Profile';
+import InboxScreen from '../Screens/Inbox';
+
 const Tab = createBottomTabNavigator();
 
 const HomeTabNavigator = (props) => {
@@ -28,7 +31,7 @@ const HomeTabNavigator = (props) => {
       />
       <Tab.Screen
         name={'Saved'}
-        component={SearchResultMapScreen}
+        component={SavedScreen}
         options={{
           tabBarIcon: ({color}) => (
             <FontAwesome name="heart-o" size={25} color={color} />
@@ -45,8 +48,8 @@ const HomeTabNavigator = (props) => {
         }}
       />
       <Tab.Screen
-        name={'Messages'}
-        component={HomeScreen}
+        name={'Inbox'}
+        component={InboxScreen}
         options={{
           tabBarIcon: ({color}) => (
             <Feather name="message-square" size={25} color={color} />
@@ -54,8 +57,8 @@ const HomeTabNavigator = (props) => {
         }}
       />
       <Tab.Screen
-        name={'profile'}
-        component={HomeScreen}
+        name={'Profile'}
+        component={ProfileScreen}
         options={{
           tabBarIcon: ({color}) => (
             <FontAwesome name="smile-o" size={25} color={color} />

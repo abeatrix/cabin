@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import styles from './styles.jsx';
 import { useNavigation } from '@react-navigation/native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
@@ -10,7 +10,7 @@ const DestinationSearchScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
 
       <GooglePlacesAutocomplete
         placeholder='Where are you going?'
@@ -32,7 +32,7 @@ const DestinationSearchScreen = () => {
         renderRow={(item:GooglePlaceData) => <SuggestionRow item={item}/>}
       />
 
-    </View>
+    </SafeAreaView>
   );
 };
 
