@@ -11,12 +11,12 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         opacity: 20,
     },
-    rooms: {
+    bedrooms: {
         marginVertical: 10,
         fontSize: 15,
         color: '#94B7D7',
     },
-    overview: {
+    description: {
         fontSize: 17,
         lineHeight: 25
     },
@@ -29,8 +29,13 @@ const styles = StyleSheet.create({
         textDecorationLine: 'line-through',
         fontWeight: 'bold',
     },
-    discount: {
+    price: {
         fontWeight: 'bold'
+    },
+    finalprice: {
+        color: '#94B7D7', //#2D57A7
+        fontWeight: 'bold',
+        fontSize: 20
     },
     longDescription: {
         marginVertical: 20,

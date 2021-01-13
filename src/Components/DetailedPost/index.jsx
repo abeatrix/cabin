@@ -4,7 +4,9 @@ import styles from './styles.js';
 
 const Post = (props) => {
 
-  const post = props.post;
+  const post = props.post[0];
+
+  const night = 7;
 
   return (
     <ScrollView>
@@ -27,13 +29,13 @@ const Post = (props) => {
 
         {/*  Old price & new price */}
         <Text style={styles.prices}>
-          <Text style={styles.oldPrice}>${post.oldPrice}</Text>
+          <Text style={styles.oldprice}>${post.oldPrice}</Text>
           <Text style={styles.price}>  ${post.newPrice} </Text>
           / night
         </Text>
 
         {/*  Total price */}
-        <Text style={styles.totalPrice}>${post.totalPrice} total</Text>
+        <Text style={styles.finalprice}>${post.newPrice * night} total for {night} nights</Text>
 
         <Text style={styles.longDescription}>
           {post.description}

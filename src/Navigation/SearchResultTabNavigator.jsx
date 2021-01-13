@@ -10,11 +10,11 @@ const Tab = createMaterialTopTabNavigator();
 
 const SearchResultTabNavigator = (props) => {
 
-    const route = useRoute();
+  const route = useRoute();
 
-    const {guests, viewport} = route.params;
+  const {guests, viewport} = route.params;
 
-    const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([])
 
   // retrieve posts from aws database using graphql
   useEffect(()=>{
