@@ -7,9 +7,9 @@ import { StatusBar } from 'expo-status-bar';
 import Router from './src/Navigation/Router';
 
 // AWS-AMPLIFY
-// import Amplify from 'aws-amplify'
-// import config from './src/aws-exports'
-// Amplify.configure(config)
+import Amplify from 'aws-amplify'
+import config from './src/aws-exports'
+Amplify.configure(config)
 
 export default function App() {
   return (

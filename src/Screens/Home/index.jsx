@@ -3,7 +3,7 @@ import { View, Text, ImageBackground, Pressable, ScrollView } from 'react-native
 import styles from './styles';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import { useNavigation } from '@react-navigation/native';
-import SearchResultScreen from '../SearchResult';
+import SavedScreen from '../Saved';
 
 const HomeScreen = (props) => {
   const navigation = useNavigation();
@@ -26,7 +26,7 @@ const HomeScreen = (props) => {
                   <Text style={styles.btnText}>Explore nearby cabins</Text>
               </Pressable>
           </ImageBackground>
-          <SearchResultScreen />
+          <SavedScreen />
       </ScrollView>
   )
 }

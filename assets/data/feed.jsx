@@ -69,14 +69,8 @@ export default [
       image: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/1.jpg',
       type: 'Private Room',
       title: 'Bright room in the heart of the city',
-<<<<<<< HEAD
-      bed: 3,
-||||||| fc904dd
-      bed: 2,
-=======
       description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
       bed: 2,
->>>>>>> main
       bedroom: 3,
       oldPrice: 90,
       newPrice: 80,
