@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 15,
     borderBottomWidth: 1,
-    borderColor: 'lightgrey'
+    borderColor: 'lightgrey',
+    padding: 20,
   },
   iconContainer: {
     backgroundColor: '#e7e7e7',
