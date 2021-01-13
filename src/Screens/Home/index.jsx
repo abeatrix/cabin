@@ -22,7 +22,7 @@ const HomeScreen = (props) => {
               <Text style={styles.title}>Go Wild</Text>
               <Pressable
               style={styles.btn}
-              onPress={()=>console.warn('Explore Btn clicked')}>
+              onPress={()=> navigation.navigate('Destination Search')}>
                   <Text style={styles.btnText}>Explore nearby cabins</Text>
               </Pressable>
           </ImageBackground>
