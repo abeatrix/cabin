@@ -13,7 +13,7 @@ const SearchResultMapScreen = (props) => {
   const width = useWindowDimensions().width;
 
   const carouselRef = useRef();
-  const map = useRef();
+  const mapRef = useRef();
   const viewConfig = useRef({itemVisiblePercentThreshold: 70});
   const onViewChanged = useRef(({viewableItems}) => {
     if(viewableItems.length>0){
@@ -28,11 +28,21 @@ const SearchResultMapScreen = (props) => {
     }
     const index = places.findIndex(place => place.id === selectedID)
     carouselRef.current.scrollToIndex({index})
+
+    const placeOnMap = places[index];
+    const region = {
+      latitude: placeOnMap.coordinate.latitude,
+      longitude: placeOnMap.coordinate.longitude,
+      latitudeDelta: 0.8,
+      longitudeDelta: 0.8,
+    }
+    mapRef.current.animateToRegion(region);
   }, [selectedID])
 
     return (
         <View style={styles.container}>
           <MapView
+          ref={mapRef}
           provider={PROVIDER_GOOGLE}
           style={styles.map}
           initialRegion={{
