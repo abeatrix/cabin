@@ -4,7 +4,7 @@ import HomeScreen from '../Screens/Home';
 import ExploreNavigator from './ExploreNavigator';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import SearchResultMapScreen from '../Screens/SearchResultMap'
@@ -14,7 +14,7 @@ const HomeTabNavigator = (props) => {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        activeTintColor: '#f15454',
+        activeTintColor: '#94B7D7',
     }}>
       <Tab.Screen
         name={'Explore'}
@@ -35,11 +35,11 @@ const HomeTabNavigator = (props) => {
         }}
       />
       <Tab.Screen
-        name={'Airbnb'}
+        name={'Home'}
         component={HomeScreen}
         options={{
           tabBarIcon: ({color}) => (
-            <FontAwesome5 name="airbnb" size={25} color={color} />
+            <Ionicons name="home-outline" size={25} color={color} />
           ),
         }}
       />
@@ -57,7 +57,7 @@ const HomeTabNavigator = (props) => {
         component={HomeScreen}
         options={{
           tabBarIcon: ({color}) => (
-            <EvilIcons name="user" size={25} color={color} />
+            <FontAwesome name="smile-o" size={25} color={color} />
           ),
         }}
       />
