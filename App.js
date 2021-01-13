@@ -1,8 +1,4 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, Text, View } from 'react-native';
-import HomeScreen from './src/Screens/Home/index'
-import SearchResultScreen from './src/Screens/SearchResult'
-import SearchResultMapScreen from './src/Screens/SearchResultMap'
 import { StatusBar } from 'expo-status-bar';
 import Router from './src/Navigation/Router';
 import { withAuthenticator } from 'aws-amplify-react-native'

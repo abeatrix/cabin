@@ -11,12 +11,12 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         opacity: 20,
     },
-    rooms: {
+    bedrooms: {
         marginVertical: 10,
         fontSize: 15,
         color: '#94B7D7',
     },
-    overview: {
+    description: {
         fontSize: 17,
         lineHeight: 25
     },
@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         fontSize: 17
     },
-    oldprice: {
+    oldPrice: {
         color: '#94B7D7',
         textDecorationLine: 'line-through',
         fontWeight: 'bold',
     },
-    discount: {
+    price: {
         fontWeight: 'bold'
     },
     finalprice: {
