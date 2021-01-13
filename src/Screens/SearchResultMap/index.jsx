@@ -7,7 +7,7 @@ import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimen
 import {API, graphqlOperation} from 'aws-amplify'
 import {listTodos} from '../../graphql/queries'
 
-const SearchResultMapScreen = (props) => {
+const SearchResultMapScreen = ({guests}) => {
   const [selectedID, setSelectedID] = useState("");
 
   const [posts, setPosts] = useState([])
@@ -17,7 +17,13 @@ const SearchResultMapScreen = (props) => {
       const fetchPosts = async () => {
           try {
               const postsResult = await API.graphql(
-                  graphqlOperation(listTodos)
+                graphqlOperation(listTodos, {
+                  filter: {
+                      maxGuests: {
+                          ge: guests
+                      }
+                  }
+                })
               )
               setPosts(postsResult.data.listTodos.items)
               console.log(posts)
