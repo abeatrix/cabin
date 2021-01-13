@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react';
 import { SafeAreaView, Text, View, Image, FlatList, Pressable } from 'react-native'
 import styles from './styles';
 import PostCarouselItem from '../../Components/Post/PostCarouselItem'
 import { Auth } from 'aws-amplify';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
-//DUMMY DATA
-import places from '../../../assets/data/feed'
+import {API, graphqlOperation} from 'aws-amplify'
+import {listTodos} from '../../graphql/queries'
 
 const ProfileScreen = (props) => {
     const width = useWindowDimensions().width;
@@ -17,6 +17,23 @@ const ProfileScreen = (props) => {
             console.log('error signing out: ', error);
         }
     }
+
+    const [posts, setPosts] = useState([])
+
+    useEffect(()=>{
+        const fetchPosts = async () => {
+            try {
+                const postsResult = await API.graphql(
+                    graphqlOperation(listTodos)
+                )
+                setPosts(postsResult.data.listTodos.items)
+                console.log(posts)
+            } catch(error) {
+                console.log(error)
+            }
+        }
+        fetchPosts();
+    }, [])
 
     return (
         <SafeAreaView style={styles.container}>
@@ -43,7 +60,7 @@ const ProfileScreen = (props) => {
             <Text style={styles.rowTitle}>LISTINGS</Text>
             <View style={styles.carousel}>
                 <FlatList
-                data={places}
+                data={posts}
                 renderItem={({item}) => <PostCarouselItem key={item.id} post={item} />}
                 horizontal
                 showsHorizontalScrollIndicator={false}

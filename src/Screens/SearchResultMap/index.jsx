@@ -4,35 +4,9 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import MapMarker from '../../Components/MapMarker'
 import PostCarouselItem from '../../Components/Post/PostCarouselItem'
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
-import {API, graphqlOperation} from 'aws-amplify'
-import {listTodos} from '../../graphql/queries'
 
-const SearchResultMapScreen = ({guests}) => {
+const SearchResultMapScreen = ({posts}) => {
   const [selectedID, setSelectedID] = useState("");
-
-  const [posts, setPosts] = useState([])
-
-  // retrieve posts from aws database using graphql
-  useEffect(()=>{
-      const fetchPosts = async () => {
-          try {
-              const postsResult = await API.graphql(
-                graphqlOperation(listTodos, {
-                  filter: {
-                      maxGuests: {
-                          ge: guests
-                      }
-                  }
-                })
-              )
-              setPosts(postsResult.data.listTodos.items)
-              console.log(posts)
-          } catch(error) {
-              console.log(error)
-          }
-      }
-      fetchPosts();
-  }, [])
 
   const width = useWindowDimensions().width;
 
