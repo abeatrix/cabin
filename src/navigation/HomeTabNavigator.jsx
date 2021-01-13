@@ -7,7 +7,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import SearchResultMapScreen from '../Screens/SearchResultMap'
+import PostScreen from '../Screens/PostScreen';
+import SearchResultMapScreen from '../Screens/SearchResultMap';
 const Tab = createBottomTabNavigator();
 
 const HomeTabNavigator = (props) => {
