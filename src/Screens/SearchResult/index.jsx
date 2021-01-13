@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
-import Post from '../../Components/Post/index'
+import Post from '../../Components/Post'
 
 // DUMMY DATA
 import feed from '../../../assets/data/feed'

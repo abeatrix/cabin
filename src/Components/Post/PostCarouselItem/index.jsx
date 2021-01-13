@@ -1,11 +1,18 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
+import { useNavigation } from '@react-navigation/native';
 
 const PostCarouselItem = ({post}) => {
     const width = useWindowDimensions().width;
     const pic = post.image
     const defaultpic = 'https://cdn.dribbble.com/users/2233706/screenshots/8256191/media/9a8a3f67617ea74ae27dd1a0135e8bf5.png'
+
+    const navigation = useNavigation();
+
+    const goToPostPage = () => {
+      navigation.navigate('Post', {postId: post.id});
+    }
 
     const styles = StyleSheet.create({
         container: {
@@ -55,7 +62,7 @@ const PostCarouselItem = ({post}) => {
 
 
     return (
-        <View style={styles.container}>
+        <Pressable onPress={goToPostPage} style={styles.container}>
             <View style={styles.wrapper}>
                 { pic ? <Image style={styles.image} source={{uri: pic}}/> : <Image style={styles.image} source={{uri: defaultpic}}/>}
 
@@ -65,7 +72,7 @@ const PostCarouselItem = ({post}) => {
                     <Text style={styles.finalprice}>${post.newPrice} / night</Text>
                 </View>
             </View>
-        </View>
+        </Pressable>
     )
 }
 
