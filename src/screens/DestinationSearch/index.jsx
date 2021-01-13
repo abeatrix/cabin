@@ -3,7 +3,8 @@ import { View } from 'react-native';
 import styles from './styles.jsx';
 import { useNavigation } from '@react-navigation/native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import SuggestionRow from './SuggestionRow'
+import SuggestionRow from './SuggestionRow';
+import {GOOGLEAPI} from '@env';
 
 const DestinationSearchScreen = () => {
   const navigation = useNavigation();
@@ -20,7 +21,7 @@ const DestinationSearchScreen = () => {
         }}
         fetchDetails
         query={{
-          key: process.env.REACT_NATIVE_GOOGLEAPI,
+          key: `${GOOGLEAPI}`,
           language: 'en',
           types: '(cities)',
         }}
