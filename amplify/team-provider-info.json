@@ -10,6 +10,11 @@
       "StackName": "amplify-cabin-dev-92235",
       "StackId": "arn:aws:cloudformation:eu-west-1:249539846534:stack/amplify-cabin-dev-92235/c52d7560-54fa-11eb-8d2e-022633bea1f9",
       "AmplifyAppId": "d23xj940ocuhay"
+    },
+    "categories": {
+      "auth": {
+        "cabinfa6be196": {}
+      }
     }
   }
 }

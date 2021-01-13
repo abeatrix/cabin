@@ -1,13 +1,22 @@
 import React from 'react'
-import { SafeAreaView, Text, View, Image, FlatList } from 'react-native'
+import { SafeAreaView, Text, View, Image, FlatList, Pressable } from 'react-native'
 import styles from './styles';
 import PostCarouselItem from '../../Components/Post/PostCarouselItem'
+import { Auth } from 'aws-amplify';
+import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 //DUMMY DATA
 import places from '../../../assets/data/feed'
-import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 
 const ProfileScreen = (props) => {
     const width = useWindowDimensions().width;
+
+    const signOut = async () => {
+        try{
+            await Auth.signOut();
+        } catch (error) {
+            console.log('error signing out: ', error);
+        }
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -43,6 +52,9 @@ const ProfileScreen = (props) => {
                 decelerationRate={'fast'}
                 />
           </View>
+          <Pressable style={styles.btn} onPress={signOut}>
+              <Text style={styles.btnText}>Log Out</Text>
+          </Pressable>
         </SafeAreaView>
     )
 }
