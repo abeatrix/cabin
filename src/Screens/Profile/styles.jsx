@@ -32,9 +32,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#071C58',
     },
-    about: {
+    aboutText: {
         fontSize: 12,
-        padding: 20,
         color: '#2D57A7'
     },
     rowText: {
@@ -63,6 +62,24 @@ const styles = StyleSheet.create({
     btnText: {
         color: '#E8EDF3',
         fontWeight: 'bold'
+    },
+    aboutForm: {
+        height: 40,
+        width: '60%',
+        borderColor: '#071C58',
+        borderWidth: 1
+    },
+    aboutFormBtn: {
+        height: 40,
+        width: '20%',
+        borderColor: 'gray',
+        borderWidth: 1,
+        backgroundColor: '#071C58',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    editBtn: {
+        margin: 20,
     }
 });
 

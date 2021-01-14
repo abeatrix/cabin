@@ -8,18 +8,21 @@ import PostScreen from '../Screens/PostScreen';
 
 const Stack = createStackNavigator();
 
-const Router = (props) => {
+const Router = ({user}) => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
 
         <Stack.Screen
           name={"Home"}
-          component={HomeTabNavigator}
           options={{
             headerShown: false
           }}
-        />
+        >
+          {() =>(
+            <HomeTabNavigator user={user} />
+          )}
+          </ Stack.Screen>
 
         <Stack.Screen
           name={"Destination Search"}
