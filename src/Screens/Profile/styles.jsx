@@ -44,10 +44,25 @@ const styles = StyleSheet.create({
     },
     carousel: {
         margin: 5,
-        backgroundColor: '#94B7D7',
-        height: 500,
+        backgroundColor: '#E8EDF3',
+        height: 200,
         width: '100%',
         paddingVertical: 30
+    },
+    btn: {
+        position: 'absolute',
+        bottom: 30,
+        padding: 10,
+        paddingHorizontal: 20,
+        borderRadius: 20,
+        height: 40,
+        backgroundColor: '#071C58',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    btnText: {
+        color: '#E8EDF3',
+        fontWeight: 'bold'
     }
 });
 

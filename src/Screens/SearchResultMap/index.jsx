@@ -3,11 +3,9 @@ import MapView, {PROVIDER_GOOGLE } from 'react-native-maps';
 import { StyleSheet, View, FlatList } from 'react-native';
 import MapMarker from '../../Components/MapMarker'
 import PostCarouselItem from '../../Components/Post/PostCarouselItem'
-//DUMMY DATA
-import places from '../../../assets/data/feed'
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 
-const SearchResultMapScreen = (props) => {
+const SearchResultMapScreen = ({posts}) => {
   const [selectedID, setSelectedID] = useState("");
 
   const width = useWindowDimensions().width;
@@ -26,13 +24,13 @@ const SearchResultMapScreen = (props) => {
     if (!selectedID || !carouselRef) {
       return;
     }
-    const index = places.findIndex(place => place.id === selectedID)
+    const index = posts.findIndex(place => place.id === selectedID)
     carouselRef.current.scrollToIndex({index})
 
-    const placeOnMap = places[index];
+    const placeOnMap = posts[index];
     const region = {
-      latitude: placeOnMap.coordinate.latitude,
-      longitude: placeOnMap.coordinate.longitude,
+      latitude: placeOnMap.latitude,
+      longitude: placeOnMap.longitude,
       latitudeDelta: 0.8,
       longitudeDelta: 0.8,
     }
@@ -53,12 +51,12 @@ const SearchResultMapScreen = (props) => {
           }}
           >
 
-            {places.map(place=>
+            {posts.map(post=>
               <MapMarker
-                coordinate={place.coordinate}
-                price={place.newPrice}
-                isSelected={place.id === selectedID}
-                onPress={() => setSelectedID(place.id)}
+                coordinate={{latitude: post.latitude, longitude: post.longitude}}
+                price={post.newPrice}
+                isSelected={post.id === selectedID}
+                onPress={() => setSelectedID(post.id)}
               />
             )}
           </MapView>
@@ -66,7 +64,7 @@ const SearchResultMapScreen = (props) => {
           <View style={styles.carousel}>
             <FlatList
               ref={carouselRef}
-              data={places}
+              data={posts}
               renderItem={({item}) => <PostCarouselItem key={item.id} post={item} />}
               horizontal
               showsHorizontalScrollIndicator={false}

@@ -1,18 +1,39 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, {useState, useEffect} from 'react';
+import { View } from "react-native";
 import DetailedPost from '../../Components/DetailedPost';
 import {useRoute} from '@react-navigation/native';
-
-import places from '../../../assets/data/feed';
+import {API, graphqlOperation} from 'aws-amplify'
+import {listTodos} from '../../graphql/queries'
 
 const PostScreen = (props) => {
   const route = useRoute();
 
-  const post = places.find(place => place.id === route.params.postId);
+  const [post, setPost] = useState([])
+
+  // retrieve post from aws database using graphql
+  useEffect(()=>{
+      const fetchPost = async () => {
+          try {
+              const postResult = await API.graphql(
+                graphqlOperation(listTodos, {
+                  filter: {
+                    id: {
+                      eq: route.params.postId
+                    }
+                  }
+                })
+              )
+              setPost(postResult.data.listTodos.items)
+          } catch(error) {
+              console.log(error)
+          }
+      }
+      fetchPost();
+  }, [])
 
   return (
     <View style={{backgroundColor: 'white'}}>
-      <DetailedPost post={post} />
+      {post ? <DetailedPost post={post} /> : null}
     </View>
   );
 };
