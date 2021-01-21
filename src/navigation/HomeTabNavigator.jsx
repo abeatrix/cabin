@@ -14,7 +14,7 @@ import InboxScreen from '../Screens/Inbox';
 
 const Tab = createBottomTabNavigator();
 
-const HomeTabNavigator = (props) => {
+const HomeTabNavigator = ({user}) => {
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -58,13 +58,16 @@ const HomeTabNavigator = (props) => {
       />
       <Tab.Screen
         name={'Profile'}
-        component={ProfileScreen}
         options={{
           tabBarIcon: ({color}) => (
             <FontAwesome name="smile-o" size={25} color={color} />
           ),
         }}
-      />
+      >
+        {() =>(
+            <ProfileScreen user={user} />
+          )}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 };

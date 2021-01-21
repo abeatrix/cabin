@@ -8,7 +8,7 @@ import {listTodos} from '../../graphql/queries'
 const PostScreen = (props) => {
   const route = useRoute();
 
-  const [post, setPost] = useState([])
+  const [post, setPost] = useState(null)
 
   // retrieve post from aws database using graphql
   useEffect(()=>{
